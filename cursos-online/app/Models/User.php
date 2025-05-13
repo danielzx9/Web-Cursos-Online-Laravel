@@ -45,4 +45,23 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function cursos(){
+        return $this->hasMany(Curso::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isInstructor()
+    {
+        return $this->role === 'instructor';
+    }
+
+    public function isStudent()
+    {
+        return $this->role === 'student';
+    }
 }
